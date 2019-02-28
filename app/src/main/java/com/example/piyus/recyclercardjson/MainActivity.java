@@ -147,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
                                         symbolNamesArr[i] + "(" + symbolsArr[i] + ")",
                                         "USD: " + currencyObj.getString("PRICE"),
                                         "vol: " + currencyObj.getString("TOTALVOLUME24H"),
-                                        currencyObj.getString("CHANGE24HOUR").length() < 6 ? currencyObj.getString("CHANGE24HOUR") : currencyObj.getString("CHANGE24HOUR").substring(0, 6),
-                                        currencyObj.getString("CHANGEPCT24HOUR").length() < 4 ? currencyObj.getString("CHANGE24HOUR") : currencyObj.getString("CHANGE24HOUR").substring(0, 4) + "%");
+                                        currencyObj.getString("CHANGE24HOUR").length() <= 6 ? currencyObj.getString("CHANGE24HOUR") : currencyObj.getString("CHANGE24HOUR").substring(0, 6),
+                                        currencyObj.getString("CHANGEPCT24HOUR").length() <= 6 ? currencyObj.getString("CHANGEPCT24HOUR") : currencyObj.getString("CHANGEPCT24HOUR").substring(0, 5) + "%");
                                 coinsItems.add(coinsItem1);
                             }
                             // checking adapter change

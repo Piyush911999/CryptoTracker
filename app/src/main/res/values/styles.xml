@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorMatteBlack</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Animate transition from one page to another -->
+        <!-- Enables window content transition -->
+        <item name="android:windowActivityTransitions">true</item>
+
     </style>
 
 </resources>
