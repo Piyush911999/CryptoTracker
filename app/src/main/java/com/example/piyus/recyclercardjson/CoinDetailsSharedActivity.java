@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,11 @@ public class CoinDetailsSharedActivity extends AppCompatActivity {
     private static final String RED = "#FF0000", GREEN = "#00E676", BLACK = "#000000";
     String valueOfCoinChangedBy = "0", percentOfCoinChangedBy = "0";
     Handler handler = new Handler();
+    int images[] = {R.mipmap.ic_bitcoin, R.mipmap.ic_ripple, R.mipmap.ic_ethereum,
+            R.mipmap.ic_eos, R.mipmap.ic_litecoin, R.mipmap.ic_bitcoin_cash,
+            R.mipmap.ic_tether, R.mipmap.ic_binance, R.mipmap.ic_tron, R.mipmap.ic_stellar};
+    ImageView coinLogoImageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +42,54 @@ public class CoinDetailsSharedActivity extends AppCompatActivity {
         coinVolShared = findViewById(R.id.coinVolShared);
         coinValUpByShared = findViewById(R.id.coinValUpByShared);
         coinPercentUpByShared = findViewById(R.id.coinPercentUpByShared);
+        coinLogoImageView = findViewById(R.id.coinLogoShared);
 
         Intent intent = getIntent();
         fromSymbolString = intent.getStringExtra("COIN_SYMBOL");
         coinNameString = intent.getStringExtra("COIN_NAME");
         //Toast.makeText(getApplicationContext(), fromSymbolString, Toast.LENGTH_SHORT).show();
-
+        findAndSetCoinLogo();
         handler.post(runnableCode);
     }
+
+    private void findAndSetCoinLogo() {
+        switch (fromSymbolString) {
+            case "BTC":
+                coinLogoImageView.setImageResource(images[0]);
+                break;
+            case "XRP":
+                coinLogoImageView.setImageResource(images[1]);
+                break;
+            case "ETH":
+                coinLogoImageView.setImageResource(images[2]);
+                break;
+            case "EOS":
+                coinLogoImageView.setImageResource(images[3]);
+                break;
+            case "LTC":
+                coinLogoImageView.setImageResource(images[4]);
+                break;
+            case "BCH":
+                coinLogoImageView.setImageResource(images[5]);
+                break;
+            case "USDT":
+                coinLogoImageView.setImageResource(images[6]);
+                break;
+            case "BNB":
+                coinLogoImageView.setImageResource(images[7]);
+                break;
+            case "TRX":
+                coinLogoImageView.setImageResource(images[8]);
+                break;
+            case "XLM":
+                coinLogoImageView.setImageResource(images[9]);
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "Image Resource not found", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
     // Define the code block to be executed
     private Runnable runnableCode = new Runnable() {
         @Override

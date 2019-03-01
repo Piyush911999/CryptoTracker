@@ -5,6 +5,7 @@ public class CryptoApiModel {
     private String data_url = "/data/pricemultifull?";
     private String fromSymbol = "fsyms="; // https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR
     private String toSymbol = "&tsyms="; //fsyms=BTC,ETH,LTC,BCH,ION,LTE&tsyms=USD,EUR
+    String[] symbolsArr = {"BTC", "XRP", "ETH", "EOS", "LTC", "BCH", "USDT", "BNB", "TRX", "XLM"};
 
     public String getCryptoBaseUrl() {
         return CRYPTO_BASE_URL;

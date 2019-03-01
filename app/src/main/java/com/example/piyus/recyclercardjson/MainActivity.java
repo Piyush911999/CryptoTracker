@@ -25,7 +25,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     String[] symbolNamesArr = {"Bitcoin ", "Ripple ", "Ethereum ", "EOS ", "Litecoin ", "Bitcoin Cash ", "Tether ", "Binance Coin ", "Tron ", "Stellar "};
-    String[] symbolsArr = {"BTC", "XRP", "ETH", "EOS", "LTC", "BCH", "USDT", "BNB", "TRX", "XLM"};
     String[] convert_to_currency_arr = {"USD", "EUR", "INR"};
     int images[] = {R.mipmap.ic_bitcoin, R.mipmap.ic_ripple, R.mipmap.ic_ethereum,
             R.mipmap.ic_eos, R.mipmap.ic_litecoin, R.mipmap.ic_bitcoin_cash,
@@ -92,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadRecyclerViewData() {
-        CryptoApiModel cryptoApiModel = new CryptoApiModel();
+        final CryptoApiModel cryptoApiModel = new CryptoApiModel();
         String fromSymbolStrings = "";
         String toCurrencyStrings = "";
-        for (int i=0; i<symbolsArr.length; i++){
-            fromSymbolStrings = fromSymbolStrings + symbolsArr[i] + ",";
+        for (int i=0; i<cryptoApiModel.symbolsArr.length; i++){
+            fromSymbolStrings = fromSymbolStrings + cryptoApiModel.symbolsArr[i] + ",";
         }
         for (int i=0; i<convert_to_currency_arr.length; i++){
             toCurrencyStrings = toCurrencyStrings + convert_to_currency_arr[i] + ",";
@@ -104,45 +103,6 @@ public class MainActivity extends AppCompatActivity {
         //String crypto_url = CRYPTO_BASE_URL + data_url + fromSymbol + fromSymbolStrings + toSymbol + toCurrencyStrings;
         String crypto_url = cryptoApiModel.getCryptoBaseUrl() + cryptoApiModel.getData_url() + cryptoApiModel.getFromSymbol() + fromSymbolStrings + cryptoApiModel.getToSymbol() + toCurrencyStrings;
 
-//        final ProgressDialog progressDialog = new ProgressDialog(this);
-//        progressDialog.setMessage("Loading Data..");
-//        progressDialog.show();
-//
-//        // Volley request for contacts
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET,
-//                URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) { // whole JSON String
-//                        progressDialog.dismiss();
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(response);
-//                            JSONArray array = jsonObject.getJSONArray(ARRAY_NAME);
-//                            // to get data from array
-//                            for(int i=0; i < array.length(); i++) {
-//                                JSONObject obj = array.getJSONObject(i);
-//                                ListItem listItem1 = new ListItem(obj.getString("name"), obj.getString("email"));
-//                                listItems.add(listItem1);
-//                            }
-//                            adapter = new MyAdapter(listItems, getApplicationContext());
-//                            recyclerView.setAdapter(adapter);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//
-//                    }
-//                }
-//        );// Volley Request for contacts
-
-
-// Volley request for Crypto
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 crypto_url,
                 new Response.Listener<String>() {
@@ -152,14 +112,14 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             coinsItems.clear();
-                            for (int i = 0; i < symbolsArr.length; i++) {
+                            for (int i = 0; i < cryptoApiModel.symbolsArr.length; i++) {
                                 //JSONObject obj = array.getJSONObject(i);
                                 JSONObject rawdata = jsonObject.getJSONObject("RAW");
-                                JSONObject coinObj = rawdata.getJSONObject(symbolsArr[i]);
+                                JSONObject coinObj = rawdata.getJSONObject(cryptoApiModel.symbolsArr[i]);
                                 JSONObject currencyObj = coinObj.getJSONObject("USD");
-                                CoinsItem coinsItem1 = new CoinsItem(symbolsArr[i],
+                                CoinsItem coinsItem1 = new CoinsItem(cryptoApiModel.symbolsArr[i],
                                         images[i],
-                                        symbolNamesArr[i] + "(" + symbolsArr[i] + ")",
+                                        symbolNamesArr[i] + "(" + cryptoApiModel.symbolsArr[i] + ")",
                                         "USD: " + currencyObj.getString("PRICE"),
                                         "vol: " + currencyObj.getString("TOTALVOLUME24H"),
                                         currencyObj.getString("CHANGE24HOUR").length() <= 6 ? currencyObj.getString("CHANGE24HOUR") : currencyObj.getString("CHANGE24HOUR").substring(0, 6),
