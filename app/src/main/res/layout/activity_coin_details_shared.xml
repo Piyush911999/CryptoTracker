@@ -13,82 +13,69 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:padding="2dp"
-        android:src="@mipmap/ic_bitcoin" />
+        android:src="@mipmap/ic_bitcoin"
+        android:transitionName="coinImageTransition" />
 
     <TextView
-        android:id="@+id/coinName2"
+        android:id="@+id/coinName2Shared"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/coinLogoShared"
         android:layout_centerHorizontal="true"
         android:text="Bitcoin (BTC)"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:transitionName="coinNameTransition" />
 
     <TextView
-        android:id="@+id/coinValInUSD"
+        android:id="@+id/coinValInUSDShared"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/coinName2"
+        android:layout_below="@+id/coinName2Shared"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:padding="2dp"
         android:text="USD: "
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:transitionName="coinUSDTransition" />
 
     <TextView
-        android:id="@+id/coinVol"
+        android:id="@+id/coinVolShared"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/coinValInUSD"
+        android:layout_below="@+id/coinValInUSDShared"
         android:layout_marginStart="8dp"
         android:padding="2dp"
         android:text="vol: "
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:transitionName="coinVolSharedumeTransition" />
 
     <TextView
-        android:id="@+id/coinValUpBy"
+        android:id="@+id/coinValUpByShared"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/coinName2"
+        android:layout_below="@+id/coinName2Shared"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:padding="2dp"
         android:text="12.66"
         android:textColor="@color/Lime"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:transitionName="coinUpByTransition" />
 
     <TextView
-        android:id="@+id/coinPercentUpBy"
+        android:id="@+id/coinPercentUpByShared"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/coinValUpBy"
+        android:layout_below="@+id/coinValUpByShared"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="12dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginEnd="12dp"
         android:padding="2dp"
         android:text="1.99%"
         android:textColor="@color/Lime"
-        android:textSize="16sp" />
-
-    <ImageView
-        android:id="@+id/graphImage"
-        android:layout_below="@id/coinName2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:padding="4dp"
-        android:layout_width="wrap_content"
-        android:src="@drawable/graph"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/graphDays"
-        android:layout_below="@id/graphImage"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:src="@drawable/graph"
-        android:text="7 Days"
-        android:layout_height="wrap_content" />
+        android:textSize="16sp"
+        android:transitionName="coinUpByPercentTransition" />
 
 </RelativeLayout>

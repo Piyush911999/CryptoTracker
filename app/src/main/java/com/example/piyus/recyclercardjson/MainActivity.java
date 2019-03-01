@@ -31,15 +31,9 @@ public class MainActivity extends AppCompatActivity {
             R.mipmap.ic_eos, R.mipmap.ic_litecoin, R.mipmap.ic_bitcoin_cash,
             R.mipmap.ic_tether, R.mipmap.ic_binance, R.mipmap.ic_tron, R.mipmap.ic_stellar};
 
-    //private static final String URL = "http://www.milcanx.com/best_android_teacher/JSONData.json";
-    private static final String CRYPTO_BASE_URL = "https://min-api.cryptocompare.com";
-    private String data_url = "/data/pricemultifull?";
-    private String fromSymbol = "fsyms="; // https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR
-    private String toSymbol = "&tsyms="; //fsyms=BTC,ETH,LTC,BCH,ION,LTE&tsyms=USD,EUR
+    int FLAG = 0;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    //private final String ARRAY_NAME = "contacts";
-    // private List<ListItem> listItems;
     private List<CoinsItem> coinsItems;
     Handler handler = new Handler();
 
@@ -47,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FLAG = 1;
 
         recyclerView = findViewById(R.id.recyclerView);
         // to keep every item of recycler view of fixed size
@@ -80,7 +75,24 @@ public class MainActivity extends AppCompatActivity {
         //handler.removeCallbacks(runnableCode);
     };
 
+    @Override
+    protected void onPause() {
+        FLAG = 0;
+        //Removes pending code execution
+        handler.removeCallbacks(runnableCode);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        if(FLAG == 0) {
+            runnableCode.run();
+        }
+        super.onResume();
+    }
+
     private void loadRecyclerViewData() {
+        CryptoApiModel cryptoApiModel = new CryptoApiModel();
         String fromSymbolStrings = "";
         String toCurrencyStrings = "";
         for (int i=0; i<symbolsArr.length; i++){
@@ -89,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<convert_to_currency_arr.length; i++){
             toCurrencyStrings = toCurrencyStrings + convert_to_currency_arr[i] + ",";
         }
-        String crypto_url = CRYPTO_BASE_URL + data_url + fromSymbol + fromSymbolStrings + toSymbol + toCurrencyStrings;
+        //String crypto_url = CRYPTO_BASE_URL + data_url + fromSymbol + fromSymbolStrings + toSymbol + toCurrencyStrings;
+        String crypto_url = cryptoApiModel.getCryptoBaseUrl() + cryptoApiModel.getData_url() + cryptoApiModel.getFromSymbol() + fromSymbolStrings + cryptoApiModel.getToSymbol() + toCurrencyStrings;
+
 //        final ProgressDialog progressDialog = new ProgressDialog(this);
 //        progressDialog.setMessage("Loading Data..");
 //        progressDialog.show();
@@ -143,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject rawdata = jsonObject.getJSONObject("RAW");
                                 JSONObject coinObj = rawdata.getJSONObject(symbolsArr[i]);
                                 JSONObject currencyObj = coinObj.getJSONObject("USD");
-                                CoinsItem coinsItem1 = new CoinsItem(images[i],
+                                CoinsItem coinsItem1 = new CoinsItem(symbolsArr[i],
+                                        images[i],
                                         symbolNamesArr[i] + "(" + symbolsArr[i] + ")",
                                         "USD: " + currencyObj.getString("PRICE"),
                                         "vol: " + currencyObj.getString("TOTALVOLUME24H"),
@@ -173,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );// Volley Request for Crypto
-
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);

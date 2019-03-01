@@ -20,7 +20,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
                 android:layout_margin="4dp"
-                android:src="@mipmap/ic_bitcoin" />
+                android:src="@mipmap/ic_bitcoin"
+                android:transitionName="coinImageTransition" />
 
             <LinearLayout
                 android:id="@+id/coinDataLayout"
@@ -38,20 +39,23 @@
                     android:text="Bitcoin (BTC)"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/Salmon"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:transitionName="coinNameTransition" />
 
                 <TextView
                     android:id="@+id/textViewHead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Price"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:transitionName="coinUSDTransition" />
 
                 <TextView
                     android:id="@+id/textViewDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Volume" />
+                    android:text="Volume"
+                    android:transitionName="coinVolumeTransition" />
             </LinearLayout>
 
 
@@ -74,7 +78,8 @@
                     android:text="12.016"
                     android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/Lime" />
+                    android:textColor="@color/Lime"
+                    android:transitionName="coinUpByTransition" />
 
                 <TextView
                     android:id="@+id/textViewPercentage"
@@ -84,7 +89,8 @@
                     android:padding="2dp"
                     android:text="2.3%"
                     android:textAlignment="center"
-                    android:textColor="@color/Lime" />
+                    android:textColor="@color/Lime"
+                    android:transitionName="coinUpByPercentTransition" />
             </LinearLayout>
 
 

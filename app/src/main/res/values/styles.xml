@@ -8,9 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <!-- Animate transition from one page to another -->
-        <!-- Enables window content transition -->
+        <!-- Enables window content transition
         <item name="android:windowActivityTransitions">true</item>
-
+        <item name="android:windowContentTransitions">true</item>
+-->
     </style>
 
 </resources>

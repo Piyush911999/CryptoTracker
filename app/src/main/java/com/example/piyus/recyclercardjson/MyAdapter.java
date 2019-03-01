@@ -1,11 +1,13 @@
 package com.example.piyus.recyclercardjson;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private static final String RED = "#FF0000", GREEN = "#00E676", BLACK = "#000000";
 
     private Context context;
+    MainActivity mainActivity;
 
     public MyAdapter(List<CoinsItem> coinsItems, Context context) {
         this.coinsItems = coinsItems;
@@ -66,8 +69,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.cardContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "" + coinsItem.getCoinName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "" + coinsItem.getCoinName(), Toast.LENGTH_SHORT).show();
                 Intent sharedIntent = new Intent(context, CoinDetailsSharedActivity.class);
+                sharedIntent.putExtra("COIN_SYMBOL", coinsItem.getCoinSymbol());
+                sharedIntent.putExtra("COIN_NAME", coinsItem.getCoinName());
                 // to avoid crashing during intent transition
                 sharedIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(sharedIntent);

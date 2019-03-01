@@ -1,15 +1,16 @@
 package com.example.piyus.recyclercardjson;
 
 public class CoinsItem {
-    private String coinName, usdVal, eurVal, valueUpBy, percentage;
+    private String coinSymbol, coinName, usdVal, eurVal, valueUpBy, percentage;
     private int images;
 
-    public CoinsItem(int images, String coinName, String usdVal, String eurVal, String valueUpBy, String percentage) {
+
+    public CoinsItem(String coinSymbol, int images, String coinName, String usdVal, String eurVal, String valueUpBy, String percentage) {
+        this.coinSymbol = coinSymbol;
         this.images = images;
         this.coinName = coinName;
         this.usdVal = usdVal;
         this.eurVal = eurVal;
-
         this.valueUpBy = valueUpBy;
         this.percentage = percentage;
     }
@@ -38,5 +39,8 @@ public class CoinsItem {
         return percentage;
     }
 
+    public String getCoinSymbol() {
+        return coinSymbol;
+    }
 
 }
