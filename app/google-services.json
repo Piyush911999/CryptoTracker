@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "826387732752",
+    "firebase_url": "https://cryptotracker-da01d.firebaseio.com",
+    "project_id": "cryptotracker-da01d",
+    "storage_bucket": "cryptotracker-da01d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826387732752:android:4d288a09aec7563f",
+        "android_client_info": {
+          "package_name": "com.example.piyus.recyclercardjson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826387732752-coevr1n0qrjp0n4va14t0uia0h984ed9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.piyus.recyclercardjson",
+            "certificate_hash": "6c0879f3d0bf96a1d8d30e1cfe28196b3dbb2bc1"
+          }
+        },
+        {
+          "client_id": "826387732752-s5335rfnc5dv9s84rg8gko6uuihbupac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwsMUOoElJHxYh66-MlEADT9f7NZNLsFM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826387732752-s5335rfnc5dv9s84rg8gko6uuihbupac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -77,5 +77,36 @@
         android:textColor="@color/Lime"
         android:textSize="16sp"
         android:transitionName="coinUpByPercentTransition" />
+    
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/coinVolShared"
+        android:layout_above="@+id/btnBuy"
+        android:id="@+id/fragmentBuySell"
+        android:name="com.example.piyus.recyclercardjson.Fragments.BuySellFragment"
+        android:layout_margin="4dp">
+
+    </fragment>
+
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/btnSell"
+        android:backgroundTint="@color/LightGreen"
+        android:layout_margin="4dp"
+        android:text="Buy" />
+
+    <Button
+        android:id="@+id/btnSell"
+        android:layout_width="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/Salmon"
+        android:text="Sell" />
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.piyus.recyclercardjson;
+package com.example.piyus.recyclercardjson.Model;
 
 public class CoinsItem {
     private String coinSymbol, coinName, usdVal, eurVal, valueUpBy, percentage;
