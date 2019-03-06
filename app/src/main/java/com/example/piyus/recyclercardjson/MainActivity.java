@@ -27,7 +27,10 @@ import com.example.piyus.recyclercardjson.Model.CryptoApiModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -85,12 +88,12 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.myProfile){
                     Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_LONG).show();
-                    //Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                    //startActivity(intent);
                     dl.closeDrawers();
                 }
                 else if (id == R.id.myNews){
                     Toast.makeText(getApplicationContext(), "News", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                    startActivity(intent);
                     dl.closeDrawers();
                 }
                 else if (id == R.id.mySettings){

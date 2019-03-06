@@ -6,4 +6,7 @@
     <string name="Open">open</string>
     <string name="Close">close</string>
     <string name="piyush_kumar">Piyush Kumar</string>
+    <string name="newsTitleString">Generate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools.</string>
+    <string name="newsSourceString">timesofindia</string>
+    <string name="read_more">Read More...</string>
 </resources>

@@ -37,7 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+                .inflate(R.layout.coin_item_card_view, parent, false);
         return new ViewHolder(view);
     }
 
@@ -65,7 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 holder.textViewUpBy.setTextColor(Color.parseColor(BLACK));
             }
         } catch(Exception e) {
-             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+             //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
         }
 
         holder.cardContainer.setOnClickListener(new View.OnClickListener() {
